@@ -3,275 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I'm Coffee - Cafea de calitate în București</title>
+    <title>I'm Coffee - Cafenea București</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Base Styles */
-        :root {
-            --primary: #8B4513;
-            --secondary: #D2B48C;
-            --accent: #654321;
-            --light: #F5F5DC;
-            --text: #3E2723;
-            --white: #FFFFFF;
-            --highlight: #A0522D;
-        }
-
+        /* Reset și stiluri de bază */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #8B4513;
+            --secondary: #D2691E;
+            --accent: #A0522D;
+            --light: #F5F5DC;
+            --dark: #3E2723;
+            --text: #333333;
+            --white: #FFFFFF;
         }
 
         body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: var(--text);
             background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
 
-        section {
-            padding: 80px 0;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        h1, h2, h3 {
-            margin-bottom: 20px;
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        p {
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: var(--white);
-            padding: 12px 30px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
-            font-family: 'Georgia', serif;
-        }
-
-        .btn:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
-        }
-
-        /* Header */
+        /* Header și navigație */
         header {
-            background: rgba(255, 255, 255, 0.95) !important;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--dark);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
-        header.scrolled {
-            padding: 10px 0;
-            background: rgba(255, 255, 255, 0.98) !important;
-        }
-
-        nav {
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
-            transition: all 0.3s ease;
+            padding: 15px 0;
         }
 
         .logo {
-            font-size: 28px;
+            color: var(--light);
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary);
             text-decoration: none;
             display: flex;
             align-items: center;
-            transition: all 0.3s ease;
-            font-family: 'Georgia', serif;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
         }
 
         .logo i {
             margin-right: 10px;
-            color: var(--accent);
+            color: var(--secondary);
         }
 
-        .nav-links {
+        .nav-menu {
             display: flex;
             list-style: none;
-            align-items: center;
         }
 
-        .nav-links li {
-            margin-left: 30px;
-            position: relative;
+        .nav-menu li {
+            margin-left: 25px;
         }
 
-        .nav-links a {
+        .nav-menu a {
+            color: var(--light);
             text-decoration: none;
-            color: var(--text);
             font-weight: 500;
             transition: color 0.3s;
             position: relative;
-            font-family: 'Georgia', serif;
         }
 
-        .nav-links a:after {
+        .nav-menu a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-menu a::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
+            background-color: var(--secondary);
+            transition: width 0.3s;
         }
 
-        .nav-links a:hover:after {
+        .nav-menu a:hover::after {
             width: 100%;
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .mobile-menu {
+        .hamburger {
             display: none;
-            font-size: 24px;
             cursor: pointer;
-            color: var(--primary);
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-menu:hover {
-            transform: rotate(90deg);
+            color: var(--light);
+            font-size: 1.5rem;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
             height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
             display: flex;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            color: var(--white);
+            color: var(--light);
             margin-top: 70px;
-            position: relative;
-            overflow: hidden;
         }
 
         .hero-content {
             max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            animation: fadeInUp 1.5s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: 3rem;
             margin-bottom: 20px;
-            color: var(--white);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            animation: slideInFromLeft 1.2s ease-out 0.5s both;
-        }
-
-        @keyframes slideInFromLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
 
         .hero p {
-            font-size: 20px;
+            font-size: 1.2rem;
             margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-            animation: slideInFromRight 1.2s ease-out 0.8s both;
         }
 
-        @keyframes slideInFromRight {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--light);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
-        .hero .btn {
-            animation: fadeIn 1.5s ease-out 1.2s both;
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* About Section */
+        /* Despre Noi */
         .about {
-            background: var(--white);
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
             position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
         }
 
         .about-content {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 40px;
         }
 
         .about-text {
             flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
         }
 
         .about-image {
@@ -279,58 +213,23 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.5s ease;
-        }
-
-        .about-image:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
         }
 
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s;
         }
 
         .about-image:hover img {
             transform: scale(1.05);
         }
 
-        /* Menu Section */
+        /* Meniu */
         .menu {
-            background: var(--secondary);
-            position: relative;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 36px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary);
-            animation: widthGrow 2s ease-out;
-        }
-
-        @keyframes widthGrow {
-            from { width: 0; }
-            to { width: 80px; }
+            padding: 80px 0;
+            background-color: var(--light);
         }
 
         .menu-categories {
@@ -338,158 +237,204 @@
             justify-content: center;
             margin-bottom: 40px;
             flex-wrap: wrap;
-            gap: 15px;
         }
 
         .category-btn {
-            background: var(--white);
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 10px 25px;
-            border-radius: 25px;
-            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 1.1rem;
             font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: 'Georgia', serif;
-        }
-
-        .category-btn.active,
-        .category-btn:hover {
-            background: var(--primary);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .menu-category {
-            display: none;
-        }
-
-        .menu-category.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .menu-item {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s;
             position: relative;
         }
 
-        .menu-item:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--primary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
+        .category-btn.active {
+            color: var(--secondary);
         }
 
-        .menu-item:hover:before {
-            transform: scaleX(1);
+        .category-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .menu-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .menu-item img {
-            width: 100%;
+        .menu-item-img {
             height: 200px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            overflow: hidden;
         }
 
-        .menu-item:hover img {
+        .menu-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .menu-item:hover .menu-item-img img {
             transform: scale(1.1);
         }
 
         .menu-item-content {
             padding: 20px;
-            position: relative;
         }
 
-        .menu-item h3 {
+        .menu-item-title {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            margin-bottom: 10px;
         }
 
-        .price {
-            color: var(--primary);
+        .menu-item-title h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+        }
+
+        .menu-item-price {
+            color: var(--secondary);
             font-weight: 700;
         }
 
-        /* Contact Section */
+        .menu-item-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Galerie */
+        .gallery {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: var(--light);
+            font-size: 2rem;
+        }
+
+        /* Contact */
         .contact {
-            background: var(--white);
+            padding: 80px 0;
+            background-color: var(--light);
         }
 
         .contact-container {
             display: flex;
-            gap: 50px;
+            gap: 40px;
         }
 
-        .contact-info, .contact-form {
+        .contact-info {
             flex: 1;
-        }
-
-        .contact-details {
-            margin-bottom: 30px;
         }
 
         .contact-item {
             display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            transition: transform 0.3s ease;
+            align-items: flex-start;
+            margin-bottom: 30px;
         }
 
-        .contact-item:hover {
-            transform: translateX(10px);
-        }
-
-        .contact-item i {
-            width: 40px;
-            height: 40px;
-            background: var(--secondary);
+        .contact-icon {
+            background-color: var(--secondary);
+            color: var(--light);
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 15px;
-            color: var(--primary);
-            transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
-        .contact-item:hover i {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.1);
+        .contact-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .form-group {
             margin-bottom: 20px;
-            position: relative;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: 500;
-            transition: all 0.3s ease;
         }
 
         .form-control {
@@ -497,16 +442,13 @@
             padding: 12px 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
         }
 
         .form-control:focus {
-            border-color: var(--primary);
+            border-color: var(--secondary);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
-            transform: translateY(-2px);
         }
 
         textarea.form-control {
@@ -516,42 +458,43 @@
 
         /* Footer */
         footer {
-            background: var(--accent);
-            color: var(--white);
-            padding: 50px 0 20px;
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 60px 0 20px;
         }
 
-        .footer-content {
+        .footer-container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
             margin-bottom: 30px;
         }
 
-        .footer-column {
-            flex: 1;
-            margin-right: 30px;
-        }
-
-        .footer-column:last-child {
-            margin-right: 0;
-        }
-
-        .footer-column h3 {
-            color: var(--white);
+        .footer-col h3 {
+            font-size: 1.3rem;
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
         }
 
-        .footer-column h3:after {
+        .footer-col h3::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 40px;
+            width: 50px;
             height: 2px;
-            background: var(--primary);
-            animation: widthGrow 2s ease-out;
+            background-color: var(--secondary);
+        }
+
+        .footer-col p {
+            margin-bottom: 15px;
         }
 
         .social-links {
@@ -565,428 +508,369 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
+            color: var(--light);
             transition: all 0.3s;
         }
 
         .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-3px) scale(1.1);
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
         }
 
         .copyright {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
         }
 
-        /* Coffee Bean Background */
-        .coffee-bean-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.05;
-        }
-
-        .coffee-bean {
-            position: absolute;
-            width: 60px;
-            height: 40px;
-            background: var(--primary);
-            border-radius: 50%;
-            transform: rotate(45deg);
-            animation: float 8s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(45deg); }
-            50% { transform: translateY(-20px) rotate(45deg); }
-        }
-
-        /* Responsive Design */
+        /* Stiluri pentru modul responsive */
         @media (max-width: 992px) {
             .about-content, .contact-container {
                 flex-direction: column;
             }
             
             .hero h1 {
-                font-size: 36px;
+                font-size: 2.5rem;
             }
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
                 position: fixed;
                 top: 70px;
-                left: 0;
-                width: 100%;
-                height: auto;
-                background: var(--white);
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: var(--dark);
                 flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-                animation: slideDown 0.3s ease;
-                z-index: 1000;
-                max-height: 80vh;
-                overflow: auto;
-            }
-
-            @keyframes slideDown {
-                from { opacity: 0; transform: translateY(-20px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                margin: 10px 0;
-                animation: fadeInLeft 0.5s ease both;
-            }
-
-            @keyframes fadeInLeft {
-                from { opacity: 0; transform: translateX(-20px); }
-                to { opacity: 1; transform: translateX(0); }
-            }
-
-            .nav-links li:nth-child(1) { animation-delay: 0.1s; }
-            .nav-links li:nth-child(2) { animation-delay: 0.2s; }
-            .nav-links li:nth-child(3) { animation-delay: 0.3s; }
-            .nav-links li:nth-child(4) { animation-delay: 0.4s; }
-
-            .mobile-menu {
-                display: block;
-                z-index: 1001;
-            }
-
-            .footer-content {
-                flex-direction: column;
-            }
-
-            .footer-column {
-                margin-right: 0;
-                margin-bottom: 30px;
+                align-items: center;
+                padding-top: 50px;
+                transition: right 0.5s;
             }
             
-            .menu-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 15px;
+            .nav-menu.active {
+                right: 0;
             }
             
-            .menu-item {
-                margin-bottom: 0;
-            }
-            
-            .menu-item img {
-                height: 120px;
-            }
-            
-            .menu-item-content {
-                padding: 10px;
-            }
-            
-            .menu-item h3 {
-                font-size: 13px;
-                flex-wrap: wrap;
-            }
-            
-            .menu-item p {
-                font-size: 11px;
-                line-height: 1.3;
-                margin-bottom: 8px;
-            }
-        }
-        
-        /* Extra small devices */
-        @media (max-width: 480px) {
-            .menu-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 10px;
+            .nav-menu li {
+                margin: 15px 0;
             }
             
             .hero h1 {
-                font-size: 28px;
+                font-size: 2rem;
             }
             
             .hero p {
-                font-size: 16px;
+                font-size: 1rem;
             }
             
-            .menu-item {
-                margin-bottom: 10px;
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .menu-categories {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .menu-item img {
-                height: 100px;
+            .category-btn {
+                margin: 5px 0;
             }
             
-            .menu-item-content {
-                padding: 8px;
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
             
-            .menu-item h3 {
-                font-size: 12px;
-                margin-bottom: 5px;
-            }
-            
-            .menu-item p {
-                font-size: 10px;
-                line-height: 1.2;
-                margin-bottom: 5px;
+            .gallery-item {
+                height: 150px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Coffee Bean Background -->
-    <div class="coffee-bean-bg" id="coffeeBeanBg"></div>
-
     <!-- Header -->
     <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">
-                    <i class="fas fa-coffee"></i>
-                    I'm Coffee
-                </a>
-                <ul class="nav-links">
-                    <li><a href="#home">Acasă</a></li>
-                    <li><a href="#about">Despre Noi</a></li>
-                    <li><a href="#menu">Meniu</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-coffee"></i>
+                I'm Coffee
+            </a>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home">Acasă</a></li>
+                <li><a href="#about">Despre Noi</a></li>
+                <li><a href="#menu">Meniu</a></li>
+                <li><a href="#gallery">Galerie</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Bun venit la I'm Coffee</h1>
-                <p>Descoperă aromele autentice ale cafelei într-un ambient relaxant și prietenos.</p>
-                <a href="#menu" class="btn">Vezi Meniul</a>
-            </div>
+        <div class="hero-content">
+            <h1>Bun venit la I'm Coffee</h1>
+            <p>Descoperă aroma autentică a cafelei proaspăt prăjite în inima Bucureștiului</p>
+            <a href="#menu" class="btn">Vezi Meniul</a>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- Despre Noi -->
     <section class="about" id="about">
         <div class="container">
+            <div class="section-title">
+                <h2>Despre Noi</h2>
+            </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h2>Despre I'm Coffee</h2>
-                    <p>La I'm Coffee, credem că fiecare ceașcă de cafea spune o poveste. De peste 5 ani, aducem în inima Bucureștiului cele mai bune boabe de cafea, selecționate cu grijă din întreaga lume.</p>
-                    <p>Fiecare băutură este preparată cu pasiune de baristi noștri experimentați, care știu să extragă toate aromele și subtilitățile fiecărui sortiment.</p>
-                    <p>Vino să te bucuri de o cafea excelentă, deserturi delicioase și o atmosferă caldă și primitoare.</p>
-                    <a href="#contact" class="btn">Vino să ne vizitezi</a>
+                    <h3>Povestea noastră</h3>
+                    <p>I'm Coffee a luat naștere din pasiunea pentru cafeaua de calitate și dorința de a crea un spațiu confortabil unde oamenii se pot reîntâlni, relaxa sau lucra în timp ce savurează o băutură excelentă.</p>
+                    <p>Situați în inima Bucureștiului, lângă Piața Victoriei, am creat un ambient plin de căldură și autenticitate, unde fiecare ceașcă de cafea spune o poveste.</p>
+                    <p>Folosim boabe de cafea selectate cu grijă din cele mai bune regiuni ale lumii, prăjite local pentru a păstra aroma și prospețimea maximă.</p>
+                    <a href="#contact" class="btn">Vizitează-ne</a>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1351&q=80" alt="Interiorul I'm Coffee">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1447&q=80" alt="Interiorul cafenelei I'm Coffee">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Menu Section -->
+    <!-- Meniu -->
     <section class="menu" id="menu">
         <div class="container">
             <div class="section-title">
-                <h2>Meniul Nostru</h2>
-                <p>Descoperă aromele noastre speciale</p>
+                <h2>Meniu</h2>
             </div>
-            
             <div class="menu-categories">
-                <button class="category-btn active" data-category="bauturi">Băuturi</button>
-                <button class="category-btn" data-category="patiserii">Patiserii</button>
-                <button class="category-btn" data-category="altele">Altele</button>
+                <button class="category-btn active" data-category="cafea">Cafea</button>
+                <button class="category-btn" data-category="ceai">Ceai</button>
+                <button class="category-btn" data-category="desert">Desert</button>
+                <button class="category-btn" data-category="sandvis">Sandvișuri</button>
             </div>
-
-            <!-- Băuturi Category -->
-            <div class="menu-category active" id="bauturi">
-                <div class="menu-grid">
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Espresso">
-                        <div class="menu-item-content">
-                            <h3>Espresso <span class="price">11 lei</span></h3>
-                            <p>Cafea puternică și concentrată - cea mai simplă formă de cafea</p>
-                        </div>
+            <div class="menu-items">
+                <!-- Cafea -->
+                <div class="menu-item" data-category="cafea">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Espresso">
                     </div>
-                    
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Cappuccino">
-                        <div class="menu-item-content">
-                            <h3>Cappuccino <span class="price">17 lei</span></h3>
-                            <p>Cafea cu lapte spumat și puțină spumă deasupra - cel mai popular tip de cafea cu lapte</p>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Espresso</h3>
+                            <span class="menu-item-price">12 Lei</span>
                         </div>
-                    </div>
-
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1561882468-9110e03e0f78?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1887" alt="Latte">
-                        <div class="menu-item-content">
-                            <h3>Latte <span class="price">19 lei</span></h3>
-                            <p>Cafea cu mult lapte și puțină spumă - mai puțin puternică, foarte cremoasă</p>
-                        </div>
-                    </div>
-
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1580661869408-55ab23f2ca6e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=435" alt="Americano">
-                        <div class="menu-item-content">
-                            <h3>Americano <span class="price">14 lei</span></h3>
-                            <p>Cafea lungă făcută din espresso cu apă fierbinte - similară cu cafeaua de filtru</p>
-                        </div>
-                    </div>
-
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1596078841242-12f73dc697c6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=464" alt="Mocha">
-                        <div class="menu-item-content">
-                            <h3>Mocha <span class="price">20 lei</span></h3>
-                            <p>Cafea cu ciocolată și lapte - ca o ciocolată caldă cu cafea</p>
-                        </div>
-                    </div>
-
-                    <div class="menu-item">
-                        <img src="https://plus.unsplash.com/premium_photo-1664970900098-2676029e6a99?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870" alt="Flat White">
-                        <div class="menu-item-content">
-                            <h3>Flat White <span class="price">22 lei</span></h3>
-                            <p>Cafea dublă cu lapte cremos - mai puternică decât Latte</p>
-                        </div>
+                        <p class="menu-item-desc">Cafea intensă și aromată, preparată prin forțarea apei fierbinți prin boabe de cafea măcinate fin.</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Patiserii Category -->
-            <div class="menu-category" id="patiserii">
-                <div class="menu-grid">
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1599940778173-e276d4acb2bb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=855" alt="Croissant">
-                        <div class="menu-item-content">
-                            <h3>Croissant <span class="price">10 lei</span></h3>
-                            <p>Croissant proaspăt cu unt, crocant și pufos</p>
-                        </div>
+                <div class="menu-item" data-category="cafea">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Cappuccino">
                     </div>
-
-                    <div class="menu-item">
-                        <img src="https://plus.unsplash.com/premium_photo-1695028378225-97fbe39df62a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170" alt="Sandviș Proaspăt">
-                        <div class="menu-item-content">
-                            <h3>Sandviș Proaspăt <span class="price">18 lei</span></h3>
-                            <p>Sandviș cu pâine proaspătă, legume de sezon și carne sau brânză la alegere</p>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Cappuccino</h3>
+                            <span class="menu-item-price">15 Lei</span>
                         </div>
-                    </div>
-
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1605190557072-1fe6a230ee65?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=689" alt="Quiche Lorraine">
-                        <div class="menu-item-content">
-                            <h3>Quiche Lorraine <span class="price">22 lei</span></h3>
-                            <p>Plăcintă sărată cu șuncă, brânză și smântână</p>
-                        </div>
-                    </div>
-
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1740731304872-ddf00532f94f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687" alt="Salată Caesar">
-                        <div class="menu-item-content">
-                            <h3>Salată Caesar <span class="price">25 lei</span></h3>
-                            <p>Salată proaspătă cu piept de pui, crutoane și sos Caesar</p>
-                        </div>
+                        <p class="menu-item-desc">O combinație perfectă de espresso, lapte aburit și spumă de lapte, decorată cu praf de cacao.</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Altele Category -->
-            <div class="menu-category" id="altele">
-                <div class="menu-grid">
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=435" alt="Ceai">
-                        <div class="menu-item-content">
-                            <h3>Ceai <span class="price">15 lei</span></h3>
-                            <p>Ceai aromat la alegere dintre o varietate de arome și sortimente</p>
-                        </div>
+                <div class="menu-item" data-category="cafea">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Latte Macchiato">
                     </div>
-
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687" alt="Ciocolată Caldă">
-                        <div class="menu-item-content">
-                            <h3>Ciocolată Caldă <span class="price">15 lei</span></h3>
-                            <p>Ciocolată caldă cremoasă și bogată, perfectă pentru zilele reci</p>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Latte Macchiato</h3>
+                            <span class="menu-item-price">16 Lei</span>
                         </div>
+                        <p class="menu-item-desc">Stratificare perfectă de lapte aburit, spumă de lapte și espresso, cu un design artistic pe suprafață.</p>
+                    </div>
+                </div>
+                
+                <!-- Ceai -->
+                <div class="menu-item" data-category="ceai" style="display: none;">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" alt="Ceai Verde">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Ceai Verde</h3>
+                            <span class="menu-item-price">10 Lei</span>
+                        </div>
+                        <p class="menu-item-desc">Ceai verde de calitate superioară, cu arome delicate și beneficii pentru sănătate.</p>
+                    </div>
+                </div>
+                
+                <!-- Desert -->
+                <div class="menu-item" data-category="desert" style="display: none;">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Tiramisu">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Tiramisu</h3>
+                            <span class="menu-item-price">18 Lei</span>
+                        </div>
+                        <p class="menu-item-desc">Desert italian clasic preparat din pișcoturi înmuiate în cafea, mascarpone și cacao.</p>
+                    </div>
+                </div>
+                
+                <!-- Sandvișuri -->
+                <div class="menu-item" data-category="sandvis" style="display: none;">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sandviș cu Pui">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Sandviș cu Pui</h3>
+                            <span class="menu-item-price">22 Lei</span>
+                        </div>
+                        <p class="menu-item-desc">Piept de pui la grătar, salată verde, roșii proaspete și maioneză de usturoi pe pâine integrală.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Galerie -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galerie</h2>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Interior cafenea">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Preparare cafea">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Espresso machine">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1575869550289-055172e6c593?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Cafea latte art">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1478&q=80" alt="Clienti in cafenea">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1481833761820-0509d3217039?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Prajitorie cafea">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
                 <h2>Contact</h2>
-                <p>Vino să ne vizitezi sau ia legătura cu noi</p>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
-                    <div class="contact-details">
-                        <h3>Informații de contact</h3>
-                        <div class="contact-item">
+                    <div class="contact-item">
+                        <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Adresă</h4>
-                                <p>Bulevardul Ion Mihalache, București 011181</p>
-                            </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h4>Telefon</h4>
-                                <p>+40 762 362 505</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p>office@imcoffee.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-clock"></i>
-                            <div>
-                                <h4>Program</h4>
-                                <p>Luni - Vineri: 8:00 - 17:00</p>
-                                <p>Sâmbătă - Duminică: 9:00 - 14:00</p>
-                            </div>
+                        <div class="contact-details">
+                            <h3>Locație</h3>
+                            <p>Strada Exemplu, nr. 123<br>București, Sector 1<br>Lângă Piața Victoriei</p>
                         </div>
                     </div>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/imcoffee1/?locale=ro_RO"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Program</h3>
+                            <p>Luni - Vineri: 7:00 - 22:00<br>Sâmbătă - Duminică: 8:00 - 23:00</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Telefon</h3>
+                            <p>+40 721 123 456</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>info@imcoffee.ro</p>
+                        </div>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <h3>Trimite-ne un mesaj</h3>
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Nume</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
+                            <input type="text" id="name" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subiect</label>
+                            <input type="text" id="subject" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="message">Mesaj</label>
-                            <textarea id="message" name="message" class="form-control" required></textarea>
+                            <textarea id="message" class="form-control" required></textarea>
                         </div>
                         <button type="submit" class="btn">Trimite Mesaj</button>
                     </form>
@@ -998,148 +882,138 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
+            <div class="footer-container">
+                <div class="footer-col">
                     <h3>I'm Coffee</h3>
-                    <p>Cafea proaspătă și savuroasă în București. Locul perfect pentru a te relaxa sau pentru o întâlnire de afaceri.</p>
+                    <p>O cafenea autentică în inima Bucureștiului, unde pasiunea pentru cafea se întâlnește cu atmosfera primitoare.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/imcoffee1/?locale=ro_RO" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Link-uri rapide</h3>
-                    <ul>
+                <div class="footer-col">
+                    <h3>Link-uri Rapide</h3>
+                    <ul class="footer-links">
                         <li><a href="#home">Acasă</a></li>
                         <li><a href="#about">Despre Noi</a></li>
                         <li><a href="#menu">Meniu</a></li>
+                        <li><a href="#gallery">Galerie</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
+                <div class="footer-col">
                     <h3>Program</h3>
-                    <p>Luni - Vineri: 8:00 - 17:00</p>
-                    <p>Sâmbătă - Duminică: 9:00 - 14:00</p>
+                    <p>Luni - Vineri: 7:00 - 22:00</p>
+                    <p>Sâmbătă - Duminică: 8:00 - 23:00</p>
+                    <p>Vino să ne vizitezi pentru o cafea proaspătă!</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 I'm Coffee Shop. Toate drepturile rezervate.</p>
+                <p>&copy; 2023 I'm Coffee. Toate drepturile rezervate.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // ========== MENU CATEGORIES ==========
-        function initMenuCategories() {
-            const categoryBtns = document.querySelectorAll('.category-btn');
-            const categories = document.querySelectorAll('.menu-category');
-            
-            categoryBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const category = this.getAttribute('data-category');
-                    
-                    categoryBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    categories.forEach(cat => {
-                        cat.classList.remove('active');
-                        if (cat.id === category) {
-                            cat.classList.add('active');
-                        }
-                    });
-                });
-            });
-        }
-
-        // ========== COFFEE BEAN BACKGROUND ==========
-        function createCoffeeBeanBackground() {
-            const container = document.getElementById('coffeeBeanBg');
-            for (let i = 0; i < 15; i++) {
-                const bean = document.createElement('div');
-                bean.className = 'coffee-bean';
-                const size = Math.random() * 40 + 20;
-                bean.style.width = `${size}px`;
-                bean.style.height = `${size * 0.7}px`;
-                bean.style.top = `${Math.random() * 100}%`;
-                bean.style.left = `${Math.random() * 100}%`;
-                bean.style.animationDelay = `${Math.random() * 8}s`;
-                bean.style.opacity = Math.random() * 0.2 + 0.1;
-                container.appendChild(bean);
-            }
-        }
-
-        // ========== EVENT LISTENERS ==========
-        document.addEventListener('DOMContentLoaded', function() {
-            initMenuCategories();
-            createCoffeeBeanBackground();
-            
-            document.querySelector('.mobile-menu').addEventListener('click', function() {
-                document.querySelector('.nav-links').classList.toggle('active');
-            });
-
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if(targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if(targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        document.querySelector('.nav-links').classList.remove('active');
-                    }
-                });
-            });
-
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('section').forEach(section => {
-                observer.observe(section);
-            });
-
-            window.addEventListener('scroll', function() {
-                const header = document.querySelector('header');
-                const scrolled = window.scrollY > 100;
-                
-                header.classList.toggle('scrolled', scrolled);
-                
-                if(window.scrollY > 100) {
-                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-                } else {
-                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-                }
-            });
-
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const submitButton = this.querySelector('button[type="submit"]');
-                const originalText = submitButton.textContent;
-                
-                submitButton.disabled = true;
-                submitButton.textContent = 'Se trimite...';
-                
-                // Simulate form submission
-                setTimeout(() => {
-                    alert(`Mulțumim, ${document.getElementById('name').value}! Mesajul tău a fost trimis. Te vom contacta în curând.`);
-                    this.reset();
-                    submitButton.disabled = false;
-                    submitButton.textContent = originalText;
-                }, 1500);
+        // Meniu mobil
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Închide meniul la click pe link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
+        
+        // Filtrare meniu
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Elimină clasa active de la toate butoanele
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // Adaugă clasa active la butonul apăsat
+                button.classList.add('active');
+                
+                const category = button.getAttribute('data-category');
+                
+                // Afișează/ascunde elementele meniului în funcție de categorie
+                menuItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Formular de contact
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Aici s-ar trimite datele la server
+            // Pentru demo, doar afișăm un mesaj
+            alert('Mesajul tău a fost trimis! Vom reveni cu un răspuns în cel mai scurt timp.');
+            contactForm.reset();
+        });
+        
+        // Animare scroll smooth
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Efect de fade-in la scroll
+        const fadeElements = document.querySelectorAll('.about-content, .menu-item, .gallery-item, .contact-item');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Setează starea inițială pentru elementele care vor fi animate
+        fadeElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        // Apelează o dată la încărcare pentru elementele deja vizibile
+        fadeInOnScroll();
     </script>
 </body>
 </html>
