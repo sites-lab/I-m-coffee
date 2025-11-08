@@ -732,144 +732,208 @@
             }
         }
         
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-            
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                width: 80%;
-                height: calc(100vh - 70px);
-                background: var(--latte);
-                flex-direction: column;
-                align-items: center;
-                padding-top: 40px;
-                transition: right 0.5s;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-            }
-            
-            .nav-menu.active {
-                right: 0;
-            }
-            
-            .nav-menu li {
-                margin: 15px 0;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-description {
-                font-size: 1rem;
-            }
-            
-            .about-features {
-                grid-template-columns: 1fr;
-            }
-            
-            .menu-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 15px;
-            }
-            
-            .card-image {
-                height: 140px;
-            }
-            
-            .card-content {
-                padding: 15px;
-            }
-            
-            .card-title {
-                font-size: 1rem;
-            }
-            
-            .card-price {
-                font-size: 1rem;
-            }
-            
-            .card-desc {
-                font-size: 0.8rem;
-            }
-            
-            .gallery-container {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .gallery-item {
-                height: 150px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .menu-tabs {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tab-btn {
-                margin: 5px 0;
-                width: 180px;
-                padding: 8px 15px;
-                font-size: 0.85rem;
-            }
-            
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .gallery-container {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .gallery-item {
-                height: 130px;
-            }
-            
-            .hero-title {
-                font-size: 1.8rem;
-            }
-            
-            .hero-badge {
-                font-size: 0.8rem;
-                padding: 6px 15px;
-            }
-            
-            .btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-            
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-form {
-                padding: 20px;
-            }
-        }
-        
-        @media (max-width: 400px) {
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .gallery-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-title {
-                font-size: 1.6rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.6rem;
-            }
-        }
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background: var(--latte);
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        transition: right 0.5s;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-menu li {
+        margin: 15px 0;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .about-features {
+        grid-template-columns: 1fr;
+    }
+    
+    /* BUTOANE FILTRARE MAI MICI */
+    .menu-tabs {
+        gap: 8px;
+        margin-bottom: 25px;
+    }
+    
+    .tab-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+        margin: 0 2px;
+    }
+    
+    /* MENIU ÎN 2 COLOANE MAI COMPACT */
+    .menu-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    
+    .card-image {
+        height: 110px;
+    }
+    
+    .card-content {
+        padding: 10px;
+    }
+    
+    .card-title {
+        font-size: 0.85rem;
+    }
+    
+    .card-price {
+        font-size: 0.85rem;
+    }
+    
+    .card-desc {
+        font-size: 0.7rem;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+    
+    .rating {
+        font-size: 0.7rem;
+    }
+    
+    .gallery-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .gallery-item {
+        height: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    .menu-tabs {
+        flex-direction: row; /* PĂSTRĂM PE UN RÂND */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .tab-btn {
+        margin: 2px;
+        width: auto; /* LĂȘĂM LĂȚIMEA NATURALĂ */
+        padding: 5px 10px;
+        font-size: 0.7rem;
+    }
+    
+    /* MENIU RĂMÂNE ÎN 2 COLOANE */
+    .menu-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    
+    .card-image {
+        height: 100px;
+    }
+    
+    .card-content {
+        padding: 8px;
+    }
+    
+    .card-title {
+        font-size: 0.8rem;
+    }
+    
+    .card-price {
+        font-size: 0.8rem;
+    }
+    
+    .card-desc {
+        font-size: 0.65rem;
+    }
+    
+    .gallery-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .gallery-item {
+        height: 120px;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-badge {
+        font-size: 0.8rem;
+        padding: 6px 15px;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-form {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    /* MENIU RĂMÂNE ÎN 2 COLOANE CHIAR ȘI PE TELEFOANE FOARTE MICI */
+    .menu-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+    
+    .card-image {
+        height: 90px;
+    }
+    
+    .card-content {
+        padding: 6px;
+    }
+    
+    .card-title {
+        font-size: 0.75rem;
+    }
+    
+    .card-desc {
+        font-size: 0.6rem;
+    }
+    
+    .gallery-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .gallery-item {
+        height: 100px;
+    }
+    
+    .hero-title {
+        font-size: 1.6rem;
+    }
+    
+    .section-title h2 {
+        font-size: 1.6rem;
+    }
+}
     </style>
 </head>
 <body>
